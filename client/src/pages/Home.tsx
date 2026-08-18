@@ -1,8 +1,8 @@
 /*
- * Direção visual desta página: Estúdio Editorial Noturno.
- * O layout usa verde floresta, creme e verde-lima de sinal, com assimetria editorial,
- * textura de estúdio e interações rápidas. Cada seção deve parecer parte de uma sessão
- * musical real: precisa, tátil e sem promessas não verificadas.
+ * Direção visual: Arquivo de Artista / Estúdio Editorial Noturno.
+ * Esta página representa Lucas, conhecido artisticamente como Duck — um produtor
+ * e artista real de Aracaju, com conexão Recife–Aracaju. O texto usa primeira
+ * pessoa quando fala da trajetória e evita transformar o artista em empresa genérica.
  */
 
 import { useEffect, useState } from "react";
@@ -11,56 +11,41 @@ import {
   ArrowUpRight,
   AudioLines,
   ChevronDown,
+  ExternalLink,
   Instagram,
   Mail,
   MapPin,
-  MessageCircle,
+  Menu,
   Mic2,
   Music2,
   Play,
   SlidersHorizontal,
   Sparkles,
+  X,
+  Youtube,
 } from "lucide-react";
 
 const asset = {
-  hero: "/manus-storage/duck-hero-studio_a78deb22.jpg",
-  detail: "/manus-storage/duck-atelier-detail_2b34e8d8.jpg",
-  room: "/manus-storage/duck-listening-room_71112b80.jpg",
-  mark: "/manus-storage/duck-mark_2fb147af.png",
+  logo: "/manus-storage/duck-logo-official_1a98cc3d.png",
+  portrait: "/manus-storage/duck-portrait-official_9e44349e.jpg",
+  mix: "/manus-storage/duck-mix-official_a80c27d6.jpg",
   qr: "/manus-storage/duck-qr_ef1a7826.png",
 };
 
-const services = [
-  {
-    number: "01",
-    icon: Music2,
-    title: "Beats / Instrumentais",
-    description: "Produção de instrumentais autorais com espaço para sua voz, seu ritmo e sua assinatura.",
-  },
-  {
-    number: "02",
-    icon: Mic2,
-    title: "Gravação",
-    description: "Captação cuidadosa para transformar interpretação, textura e intenção em matéria sonora.",
-  },
-  {
-    number: "03",
-    icon: SlidersHorizontal,
-    title: "Mixagem",
-    description: "Equilíbrio, clareza e impacto para cada elemento ocupar o lugar certo na faixa.",
-  },
-  {
-    number: "04",
-    icon: AudioLines,
-    title: "Masterização",
-    description: "O último ajuste antes do mundo ouvir: presença, tradução e consistência para distribuição.",
-  },
+const credits = [
+  { title: "Posturadona", artist: "Luiz Cinnamon", tags: "Instrumental · Gravação · Mixagem · Masterização", href: "https://youtu.be/KEEfn6lgssM?si=ADs9--kVskAtEmNd" },
+  { title: "Tititi", artist: "Leones", tags: "Instrumental · Gravação · Mixagem · Masterização", href: "https://open.spotify.com/intl-pt/track/3edfwApBI2x5QL4MHK13Re?si=7accbb981f9a4e76" },
+  { title: "Cheguei Tão Longe", artist: "Leones ft. Chrislops", tags: "Instrumental · Gravação · Mixagem · Masterização", href: "https://www.youtube.com/watch?v=Uxt24afz3HM" },
+  { title: "I Wrote a Song", artist: "Belentani", tags: "Instrumental · Mixagem · Masterização", href: "https://www.youtube.com/watch?v=2iaAAzN0__Y" },
+  { title: "Heart Breaking", artist: "Belentani", tags: "Instrumental · Mixagem · Masterização", href: "https://www.youtube.com/watch?v=5MClO2y0OLM" },
+  { title: "Contra a Parede", artist: "Jullya Murvack", tags: "Gravação · Mixagem · Masterização", href: "https://www.youtube.com/watch?v=8WbLyUPDGVE" },
 ];
 
-const process = [
-  ["01", "Escuta", "Entender a referência, a intenção e o espaço que a música precisa ocupar."],
-  ["02", "Construção", "Desenhar arranjo, timbre e dinâmica sem apagar o que torna a faixa sua."],
-  ["03", "Acabamento", "Organizar detalhes, volume e presença para entregar um som pronto para circular."],
+const services = [
+  { number: "01", icon: Music2, title: "Instrumental", description: "Construção de beats e instrumentais para a música ter base, movimento e personalidade." },
+  { number: "02", icon: Mic2, title: "Gravação", description: "Captação para transformar uma interpretação, uma voz e uma ideia em material de verdade." },
+  { number: "03", icon: SlidersHorizontal, title: "Mixagem", description: "Equilíbrio e profundidade para cada elemento encontrar o lugar certo na faixa." },
+  { number: "04", icon: AudioLines, title: "Masterização", description: "O acabamento que prepara o som para chegar consistente às plataformas." },
 ];
 
 function scrollToSection(id: string) {
@@ -88,174 +73,127 @@ export default function Home() {
   return (
     <div className="site-shell">
       <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
-        <a className="brand-lockup" href="#top" aria-label="DUCK Produção Musical — início">
-          <img src={asset.mark} alt="" className="brand-mark" />
-          <span className="brand-wordmark">DUCK</span>
-          <span className="brand-caption">produção musical</span>
+        <a className="brand-lockup" href="#top" aria-label="Duck — início">
+          <img src={asset.logo} alt="Duck" className="brand-mark" />
+          <span className="brand-caption">Lucas / produtor e artista</span>
         </a>
-
-        <button
-          className="menu-toggle"
-          aria-expanded={menuOpen}
-          aria-controls="primary-navigation"
-          onClick={() => setMenuOpen((open) => !open)}
-        >
+        <button className="menu-toggle" aria-expanded={menuOpen} aria-controls="primary-navigation" onClick={() => setMenuOpen((open) => !open)}>
           <span>{menuOpen ? "Fechar" : "Menu"}</span>
-          <span className="menu-bars" aria-hidden="true"><i /><i /></span>
+          {menuOpen ? <X size={19} /> : <Menu size={19} />}
         </button>
-
         <nav id="primary-navigation" className={`primary-nav ${menuOpen ? "is-open" : ""}`}>
-          <a href="#studio" onClick={() => setMenuOpen(false)}>O estúdio</a>
-          <a href="#services" onClick={() => setMenuOpen(false)}>Serviços</a>
-          <a href="#process" onClick={() => setMenuOpen(false)}>Método</a>
-          <a href="#contact" onClick={() => setMenuOpen(false)}>Contato</a>
-          <a className="nav-cta" href="https://duck.46graus.com/" target="_blank" rel="noreferrer">
-            Ouvir o trabalho <ArrowUpRight size={15} />
-          </a>
+          <a href="#sobre" onClick={() => setMenuOpen(false)}>Sobre mim</a>
+          <a href="#portfolio" onClick={() => setMenuOpen(false)}>Portfólio</a>
+          <a href="#processo" onClick={() => setMenuOpen(false)}>Processo</a>
+          <a href="#contato" onClick={() => setMenuOpen(false)}>Contato</a>
+          <a className="nav-cta" href="https://duck.46graus.com/" target="_blank" rel="noreferrer">Site oficial <ExternalLink size={14} /></a>
         </nav>
       </header>
 
       <main id="top">
-        <section className="hero-section" aria-labelledby="hero-title">
-          <div className="hero-media" aria-hidden="true">
-            <img src={asset.hero} alt="" />
-          </div>
+        <section className="hero-section artist-hero" aria-labelledby="hero-title">
+          <div className="hero-media" aria-hidden="true"><img src={asset.portrait} alt="" /></div>
           <div className="hero-overlay" aria-hidden="true" />
           <div className="hero-grid" aria-hidden="true" />
-
           <div className="hero-content page-frame">
-            <div className="hero-kicker"><span className="live-dot" /> Aracaju · Sergipe · Brasil</div>
-            <h1 id="hero-title">Sua ideia<br /><em>já tem pulso.</em></h1>
-            <p className="hero-lede">A DUCK transforma intenção em som: beats, gravação, mixagem e masterização para artistas que não querem soar como qualquer um.</p>
+            <div className="hero-kicker"><span className="live-dot" /> Recife ↔ Aracaju · Brasil</div>
+            <p className="artist-intro">Eu sou Lucas.<br /><span>Você pode me chamar de Duck.</span></p>
+            <h1 id="hero-title">A música<br /><em>é o meu jeito.</em></h1>
+            <p className="hero-lede">Sou produtor musical e artista. Transformo ideias, vozes e referências em beats, gravações, mixagens e músicas com identidade.</p>
             <div className="hero-actions">
-              <button className="button button-primary" onClick={() => navigate("contact")}>Começar uma sessão <ArrowDownRight size={18} /></button>
-              <a className="text-link" href="#services">Conhecer o processo <span>↘</span></a>
+              <button className="button button-primary" onClick={() => navigate("contato")}>Falar comigo <ArrowDownRight size={18} /></button>
+              <a className="text-link" href="#portfolio">Ver trabalhos <span>↘</span></a>
             </div>
           </div>
-
-          <div className="hero-side-note" aria-hidden="true">
-            <span>DUCK / SESSION 001</span>
-            <span>POP · TRAP · MPB · HIP HOP</span>
-          </div>
-          <div className="hero-scroll-hint"><span>desça para ouvir a ideia</span><ChevronDown size={16} /></div>
+          <div className="hero-side-note" aria-hidden="true"><span>DUCK / LUCAS</span><span>ARTISTA · PRODUTOR · AUTODIDATA</span></div>
+          <div className="hero-scroll-hint"><span>desça para conhecer a história</span><ChevronDown size={16} /></div>
         </section>
 
-        <section className="signal-strip" aria-label="Indicadores da DUCK">
+        <section className="signal-strip" aria-label="Assinatura artística">
           <div className="signal-wave"><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /></div>
-          <div className="signal-copy"><Sparkles size={15} /> produção com identidade</div>
+          <div className="signal-copy"><Sparkles size={15} /> som com identidade</div>
           <div className="signal-wave signal-wave-right"><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /></div>
         </section>
 
-        <section className="intro-section page-frame" id="studio">
-          <div className="section-marker">01 / o estúdio</div>
+        <section className="intro-section page-frame" id="sobre">
+          <div className="section-marker">01 / sobre mim</div>
           <div className="intro-layout">
             <div className="intro-statement">
-              <p className="eyebrow">Não é só terminar uma faixa.</p>
-              <h2>É encontrar o lugar onde ela <em>fica viva.</em></h2>
-              <p className="body-copy">A DUCK nasceu em Aracaju para trabalhar no ponto de encontro entre técnica e intenção. Cada escolha — um kick, uma pausa, uma voz mais perto — precisa carregar a identidade de quem está criando.</p>
-              <a className="arrow-link" href="https://duck.46graus.com/" target="_blank" rel="noreferrer">Ver o universo DUCK <ArrowUpRight size={17} /></a>
+              <p className="eyebrow">uma história feita à mão</p>
+              <h2>Eu não tinha um estúdio. Então <em>aprendi.</em></h2>
+              <p className="body-copy">Meu nome verdadeiro é Lucas, mas provavelmente você já me conhece como Duck. Meu caminho com a música começou aos 12 anos. Entre os 14 e 16, estudei guitarra e teoria musical no Conservatório de Música de Sergipe.</p>
+              <p className="body-copy">Aos 17, quis tirar minhas composições do papel. Como não tinha dinheiro para ir a um studio, aprendi pela internet a gravar e produzir em casa. Desde então, sigo estudando, investindo em equipamento e fazendo a qualidade do trabalho falar por si.</p>
+              <a className="arrow-link" href="https://duck.46graus.com/sobre-mim/" target="_blank" rel="noreferrer">Ler minha história completa <ArrowUpRight size={17} /></a>
             </div>
-            <figure className="editorial-image intro-image">
-              <img src={asset.detail} alt="Mesa de mixagem com faders e elementos de uma sessão de estúdio" loading="lazy" />
-              <figcaption><span>nota de sessão</span><span>detalhe importa</span></figcaption>
+            <figure className="editorial-image intro-image portrait-frame">
+              <img src={asset.mix} alt="Duck trabalhando em uma sessão de mixagem" loading="lazy" />
+              <figcaption><span>Aracaju / Sergipe</span><span>desde 2021</span></figcaption>
             </figure>
           </div>
         </section>
 
-        <section className="numbers-section page-frame" aria-label="Números da DUCK">
-          <div className="numbers-heading"><span className="eyebrow">uma trajetória em movimento</span><AudioLines size={28} strokeWidth={1.2} /></div>
+        <section className="numbers-section page-frame" aria-label="Marcos da trajetória">
+          <div className="numbers-heading"><span className="eyebrow">um caminho em movimento</span><AudioLines size={28} strokeWidth={1.2} /></div>
           <div className="numbers-grid">
-            <div className="number-item"><strong>36M<span>+</span></strong><small>streams</small></div>
-            <div className="number-item"><strong>40<span>+</span></strong><small>lançamentos</small></div>
-            <div className="number-item"><strong>1.4K<span>+</span></strong><small>seguidores</small></div>
-            <div className="number-note"><span>dados de catálogo</span><p>Um histórico que cresce faixa por faixa, sem atalhos para a identidade.</p></div>
+            <div className="number-item"><strong>12<span>anos</span></strong><small>quando comecei na música</small></div>
+            <div className="number-item"><strong>2021</strong><small>primeiro curso de produção</small></div>
+            <div className="number-item"><strong>∞</strong><small>faixas ainda por criar</small></div>
+            <div className="number-note"><span>o ponto de partida</span><p>Do violão improvisado ao trabalho para artistas do Brasil e do exterior.</p></div>
           </div>
         </section>
 
-        <section className="services-section page-frame" id="services">
+        <section className="portfolio-section page-frame" id="portfolio">
+          <div className="services-header portfolio-header">
+            <div><div className="section-marker">02 / portfólio</div><h2>Algumas faixas<br />que carregam <em>meu som.</em></h2></div>
+            <p className="services-intro">Instrumental, gravação, mixagem e masterização. Cada crédito abaixo vem do meu portfólio público.</p>
+          </div>
+          <div className="credits-grid">
+            {credits.map((credit, index) => (
+              <a key={credit.title} className={`credit-card credit-${index + 1}`} href={credit.href} target="_blank" rel="noreferrer">
+                <span className="credit-index">0{index + 1}</span>
+                <span className="credit-play"><Play size={15} fill="currentColor" /></span>
+                <span className="credit-title">{credit.title}</span>
+                <span className="credit-artist">{credit.artist}</span>
+                <span className="credit-tags">{credit.tags}</span>
+                <ArrowUpRight className="credit-arrow" size={18} />
+              </a>
+            ))}
+          </div>
+          <a className="arrow-link portfolio-more" href="https://duck.46graus.com/portfolio/" target="_blank" rel="noreferrer">Ver o portfólio completo <ArrowUpRight size={17} /></a>
+        </section>
+
+        <section className="services-section page-frame" id="processo">
           <div className="services-header">
-            <div><div className="section-marker">02 / serviços</div><h2>Do primeiro beat<br />ao <em>arquivo final.</em></h2></div>
-            <p className="services-intro">Você pode chegar com uma referência, uma voz no celular ou apenas uma sensação. A sessão começa onde a ideia estiver.</p>
+            <div><div className="section-marker">03 / o que eu faço</div><h2>Da ideia<br />ao <em>arquivo final.</em></h2></div>
+            <p className="services-intro">Você pode chegar com uma referência, uma voz no celular ou apenas uma sensação. Eu encontro o caminho a partir daí.</p>
           </div>
           <div className="services-layout">
             <div className="services-list">
               {services.map((service, index) => {
                 const Icon = service.icon;
-                return (
-                  <button key={service.number} className={`service-row ${activeService === index ? "is-active" : ""}`} onClick={() => setActiveService(index)} aria-pressed={activeService === index}>
-                    <span className="service-number">{service.number}</span>
-                    <span className="service-icon"><Icon size={21} strokeWidth={1.4} /></span>
-                    <span className="service-title">{service.title}</span>
-                    <ArrowUpRight className="service-arrow" size={18} />
-                  </button>
-                );
+                return <button key={service.number} className={`service-row ${activeService === index ? "is-active" : ""}`} onClick={() => setActiveService(index)} aria-pressed={activeService === index}><span className="service-number">{service.number}</span><span className="service-icon"><Icon size={21} strokeWidth={1.4} /></span><span className="service-title">{service.title}</span><ArrowUpRight className="service-arrow" size={18} /></button>;
               })}
             </div>
-            <div className="service-detail-panel">
-              <div className="detail-topline"><span>sessão selecionada</span><span>{services[activeService].number} / 04</span></div>
-              <div className="detail-icon"><ActiveServiceIcon size={30} strokeWidth={1.2} /></div>
-              <h3>{services[activeService].title}</h3>
-              <p>{services[activeService].description}</p>
-              <div className="detail-footer"><span>DUCK / workflow</span><span className="detail-wave">∿∿∿</span></div>
-            </div>
+            <div className="service-detail-panel"><div className="detail-topline"><span>meu processo</span><span>{services[activeService].number} / 04</span></div><div className="detail-icon"><ActiveServiceIcon size={30} strokeWidth={1.2} /></div><h3>{services[activeService].title}</h3><p>{services[activeService].description}</p><div className="detail-footer"><span>DUCK / workflow</span><span className="detail-wave">∿∿∿</span></div></div>
           </div>
         </section>
 
-        <section className="process-section" id="process">
+        <section className="process-section artist-story">
           <div className="page-frame process-layout">
-            <div className="process-image-wrap">
-              <img src={asset.room} alt="Sala de escuta com monitores de estúdio" loading="lazy" />
-              <span className="image-stamp">listen<br />closely</span>
-            </div>
-            <div className="process-content">
-              <div className="section-marker">03 / método</div>
-              <h2>Um bom processo<br />deixa a música <em>respirar.</em></h2>
-              <p className="body-copy">Não existe fórmula que substitua escuta. O método da DUCK organiza o caminho para que a técnica apoie a emoção — e não o contrário.</p>
-              <div className="process-list">
-                {process.map(([number, title, description]) => (
-                  <div className="process-step" key={number}>
-                    <span>{number}</span><div><h3>{title}</h3><p>{description}</p></div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <div className="process-image-wrap"><img src={asset.portrait} alt="Retrato de Duck em ambiente musical" loading="lazy" /><span className="image-stamp">feito<br />em casa</span></div>
+            <div className="process-content"><div className="section-marker">04 / de onde eu vim</div><h2>Autodidata não é estar sozinho. É <em>continuar buscando.</em></h2><p className="body-copy">Eu comecei sem dinheiro para um studio e sem equipamento ideal. Aprendi o que precisava, lancei meus sons, recebi os primeiros contatos e fui transformando cada limite em motivo para estudar mais.</p><div className="process-list"><div className="process-step"><span>01</span><div><h3>Aprender</h3><p>Violão, guitarra, teoria musical e produção aprendidos na prática.</p></div></div><div className="process-step"><span>02</span><div><h3>Experimentar</h3><p>Compor, gravar em casa e testar caminhos até encontrar uma assinatura.</p></div></div><div className="process-step"><span>03</span><div><h3>Entregar</h3><p>Fazer a técnica servir à música e deixar o resultado falar por si.</p></div></div></div></div>
           </div>
         </section>
 
-        <section className="manifesto-section page-frame">
-          <div className="manifesto-mark"><img src={asset.mark} alt="" /></div>
-          <div className="manifesto-copy"><span className="eyebrow">manifesto / duck</span><blockquote>“A faixa não precisa gritar para ser lembrada. Ela precisa ser <em>verdadeira</em> no lugar certo.”</blockquote><span className="manifesto-signature">DUCK PRODUÇÃO MUSICAL</span></div>
-        </section>
+        <section className="manifesto-section page-frame"><div className="manifesto-mark"><img src={asset.logo} alt="Duck" /></div><div className="manifesto-copy"><span className="eyebrow">nota do artista</span><blockquote>“Eu não gosto de passar vontade. Se existe uma música para fazer, eu <em>aprendo como.</em>”</blockquote><span className="manifesto-signature">LUCAS / DUCK</span></div></section>
 
-        <section className="contact-section page-frame" id="contact">
-          <div className="contact-card">
-            <div className="contact-copy">
-              <div className="section-marker">04 / contato</div>
-              <h2>Vamos criar<br /><em>juntos?</em></h2>
-              <p>Conte o que você está construindo, em que ponto a música está e o que ela precisa dizer. A próxima sessão começa com uma conversa.</p>
-              <div className="contact-links">
-                <a href="https://wa.me/5579996026590" target="_blank" rel="noreferrer"><MessageCircle size={17} /> WhatsApp <ArrowUpRight size={15} /></a>
-                <a href="mailto:duck-beats@hotmail.com"><Mail size={17} /> duck-beats@hotmail.com <ArrowUpRight size={15} /></a>
-                <a href="https://www.instagram.com/duck4s" target="_blank" rel="noreferrer"><Instagram size={17} /> @duck4s <ArrowUpRight size={15} /></a>
-              </div>
-            </div>
-            <div className="qr-card">
-              <div className="qr-label"><span>acesse o site</span><ArrowUpRight size={16} /></div>
-              <img src={asset.qr} alt="Código QR para acessar o site da DUCK Produção Musical" loading="lazy" />
-              <div className="qr-url">duck.46graus.com</div>
-            </div>
-          </div>
-          <div className="location-line"><MapPin size={16} /> Aracaju · Sergipe · Brasil <span /> atendimento para artistas do Brasil e do exterior</div>
+        <section className="contact-section page-frame" id="contato">
+          <div className="contact-card"><div className="contact-copy"><div className="section-marker">05 / contato</div><h2>Vamos fazer<br /><em>uma faixa?</em></h2><p>Me conte o que você está construindo, em que ponto a música está e o que ela precisa dizer. Trabalho a partir de Aracaju e também de forma virtual.</p><div className="contact-links"><a href="https://wa.me/5579996026590" target="_blank" rel="noreferrer"><MapPin size={17} /> WhatsApp <ArrowUpRight size={15} /></a><a href="mailto:Duck-beats@hotmail.com"><Mail size={17} /> Duck-beats@hotmail.com <ArrowUpRight size={15} /></a><a href="https://www.instagram.com/duck4s/" target="_blank" rel="noreferrer"><Instagram size={17} /> @duck4s <ArrowUpRight size={15} /></a><a href="https://www.youtube.com/channel/UCx7_hepVm10ulxHGWuvjjBg" target="_blank" rel="noreferrer"><Youtube size={17} /> YouTube <ArrowUpRight size={15} /></a></div></div><div className="qr-card"><div className="qr-label"><span>meu site oficial</span><ArrowUpRight size={16} /></div><img src={asset.qr} alt="Código QR para acessar o site oficial de Duck" loading="lazy" /><div className="qr-url">duck.46graus.com</div></div></div>
+          <div className="location-line"><MapPin size={16} /> Recife ↔ Aracaju · Brasil <span /> produção e atendimento online</div>
         </section>
       </main>
 
-      <footer className="site-footer page-frame">
-        <a className="brand-lockup footer-brand" href="#top" aria-label="Voltar ao início">
-          <img src={asset.mark} alt="" className="brand-mark" /><span className="brand-wordmark">DUCK</span><span className="brand-caption">produção musical</span>
-        </a>
-        <span>© {new Date().getFullYear()} DUCK Produção Musical</span>
-        <a href="#top" className="footer-top">voltar ao topo ↑</a>
-      </footer>
+      <footer className="site-footer page-frame"><a className="brand-lockup footer-brand" href="#top" aria-label="Voltar ao início"><img src={asset.logo} alt="Duck" className="brand-mark" /><span className="brand-caption">Lucas / Duck</span></a><span>© {new Date().getFullYear()} Lucas / Duck</span><a href="#top" className="footer-top">voltar ao topo ↑</a></footer>
     </div>
   );
 }

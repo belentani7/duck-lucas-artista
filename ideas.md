@@ -55,23 +55,23 @@ Entradas usam apenas opacidade e deslocamento curto, com atraso de 40–70 ms en
 A hierarquia combina títulos grandes e compactos com blocos de leitura curtos. Números usam peso forte e tracking ligeiramente negativo; microcopy usa tracking positivo.
 
 ### Brand Essence
-**Uma casa de produção musical de Aracaju para artistas que precisam transformar ideia em som com identidade, precisão e presença.**
+**Lucas, conhecido como Duck: produtor musical e artista de Aracaju, com conexão Recife–Aracaju, para quem quer transformar uma ideia em som com identidade, precisão e presença.**
 
-**Personalidade:** criteriosa, magnética, artesanal.
+**Personalidade:** autodidata, magnética, artesanal.
 
 ### Brand Voice
-Headlines são diretas e sensoriais. CTAs convidam para uma ação concreta, nunca para um clichê. O microcopy é curto, humano e seguro.
+Headlines são diretas e sensoriais. A voz é pessoal, em primeira pessoa quando fala da trajetória, e nunca simula uma equipe ou empresa. CTAs convidam para falar com Duck ou ouvir seus trabalhos. O microcopy é curto, humano e seguro.
 
 Exemplos:
-- “Sua ideia já tem pulso. Vamos dar forma.”
-- “Do primeiro beat ao arquivo pronto para distribuição.”
+- “Eu não tinha um estúdio. Então aprendi.”
+- “Me conte o que você está construindo.”
 
 ### Wordmark & Logo
-O wordmark “DUCK” deve aparecer com tipografia compacta e espaçamento controlado, acompanhado pelo símbolo abstrato de pato integrado a uma onda sonora. O símbolo gerado será usado como marca de navegação e favicon, sem depender apenas do texto.
+O site deve usar o logotipo oficial de Duck disponível no seu próprio site público, acompanhado da assinatura “Lucas / produtor e artista”. O símbolo gerado anteriormente não deve substituir a identidade oficial. A marca principal é pessoal: Duck é o nome artístico de Lucas.
 
 ### Regra de decisão
 Quando houver dúvida: **esta escolha reforça a sensação de uma sessão musical bem conduzida ou a dilui em estética genérica?**
 
 ## Limites de conteúdo
 
-A página não apresenta avaliações, depoimentos, logos de clientes ou resultados não confirmados. Os dados “36M+ streams”, “40+ lançamentos” e “1.4K+ seguidores” serão tratados como informações fornecidas para a comunicação da marca, sem criar testemunhos ou atribuições adicionais.
+A página não apresenta avaliações, depoimentos, logos de clientes ou resultados não confirmados. Créditos e links são mostrados como portfólio público. A biografia e os canais de contato devem permanecer alinhados ao site oficial de Duck. A menção a Recife–Aracaju é uma orientação de posicionamento fornecida pelo artista e não deve ser expandida para uma biografia não confirmada.
