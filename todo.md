@@ -8,4 +8,4 @@
 - [x] Revisar y limpiar documentación, notas y archivos temporales del proyecto.
 - [x] Ejecutar comprobaciones TypeScript y build de producción.
 - [x] Verificar escritorio y móvil con capturas del sitio corregido.
-- [ ] Crear checkpoint final actualizado y preparar exportación a GitHub desde la interfaz.
+- [x] Crear checkpoint final actualizado y preparar exportación a GitHub desde la interfaz.

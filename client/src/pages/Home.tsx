@@ -188,7 +188,20 @@ export default function Home() {
         <section className="manifesto-section page-frame"><div className="manifesto-mark"><img src={asset.logo} alt="Duck" /></div><div className="manifesto-copy"><span className="eyebrow">nota do artista</span><blockquote>“Eu não gosto de passar vontade. Se existe uma música para fazer, eu <em>aprendo como.</em>”</blockquote><span className="manifesto-signature">LUCAS / DUCK</span></div></section>
 
         <section className="contact-section page-frame" id="contato">
-          <div className="contact-card"><div className="contact-copy"><div className="section-marker">05 / contato</div><h2>Vamos fazer<br /><em>uma faixa?</em></h2><p>Me conte o que você está construindo, em que ponto a música está e o que ela precisa dizer. Trabalho a partir de Aracaju e também de forma virtual.</p><div className="contact-links"><a href="https://wa.me/5579996026590" target="_blank" rel="noreferrer"><MapPin size={17} /> WhatsApp <ArrowUpRight size={15} /></a><a href="mailto:Duck-beats@hotmail.com"><Mail size={17} /> Duck-beats@hotmail.com <ArrowUpRight size={15} /></a><a href="https://www.instagram.com/duck4s/" target="_blank" rel="noreferrer"><Instagram size={17} /> @duck4s <ArrowUpRight size={15} /></a><a href="https://www.youtube.com/channel/UCx7_hepVm10ulxHGWuvjjBg" target="_blank" rel="noreferrer"><Youtube size={17} /> YouTube <ArrowUpRight size={15} /></a></div></div><div className="qr-card"><div className="qr-label"><span>meu site oficial</span><ArrowUpRight size={16} /></div><img src={asset.qr} alt="Código QR para acessar o site oficial de Duck" loading="lazy" /><div className="qr-url">duck.46graus.com</div></div></div>
+          <div className="contact-card contact-card-single">
+            <div className="contact-copy">
+              <div className="section-marker">05 / contato</div>
+              <h2>Vamos fazer<br /><em>uma faixa?</em></h2>
+              <p>Me conte o que você está construindo, em que ponto a música está e o que ela precisa dizer. Trabalho a partir de Aracaju e também de forma virtual para qualquer lugar.</p>
+              <div className="contact-links contact-links-grid">
+                <a href="https://wa.me/5579996026590" target="_blank" rel="noreferrer"><MapPin size={17} /> WhatsApp · 55 79 99602-6590 <ArrowUpRight size={15} /></a>
+                <a href="mailto:Duck-beats@hotmail.com"><Mail size={17} /> Duck-beats@hotmail.com <ArrowUpRight size={15} /></a>
+                <a href="https://www.instagram.com/duck4s/" target="_blank" rel="noreferrer"><Instagram size={17} /> @duck4s <ArrowUpRight size={15} /></a>
+                <a href="https://www.youtube.com/channel/UCx7_hepVm10ulxHGWuvjjBg" target="_blank" rel="noreferrer"><Youtube size={17} /> Canal no YouTube <ArrowUpRight size={15} /></a>
+                <a href="https://duck.46graus.com/" target="_blank" rel="noreferrer"><ExternalLink size={17} /> Visitar Site Oficial (46graus) <ArrowUpRight size={15} /></a>
+              </div>
+            </div>
+          </div>
           <div className="location-line"><MapPin size={16} /> Recife ↔ Aracaju · Brasil <span /> produção e atendimento online</div>
         </section>
       </main>
