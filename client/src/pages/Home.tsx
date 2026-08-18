@@ -6,6 +6,7 @@
  */
 
 import { useEffect, useState } from "react";
+import { Link } from "wouter";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -29,7 +30,6 @@ const asset = {
   logo: "/manus-storage/duck-logo-official_1a98cc3d.png",
   portrait: "/manus-storage/duck-portrait-official_9e44349e.jpg",
   mix: "/manus-storage/duck-mix-official_a80c27d6.jpg",
-  qr: "/manus-storage/duck-qr_ef1a7826.png",
 };
 
 const credits = [
@@ -85,6 +85,8 @@ export default function Home() {
           <a href="#sobre" onClick={() => setMenuOpen(false)}>Sobre mim</a>
           <a href="#portfolio" onClick={() => setMenuOpen(false)}>Portfólio</a>
           <a href="#processo" onClick={() => setMenuOpen(false)}>Processo</a>
+          <Link href="/singles" onClick={() => setMenuOpen(false)}>Singles</Link>
+          <Link href="/studio" onClick={() => setMenuOpen(false)}>Studio</Link>
           <a href="#contato" onClick={() => setMenuOpen(false)}>Contato</a>
           <a className="nav-cta" href="https://duck.46graus.com/" target="_blank" rel="noreferrer">Site oficial <ExternalLink size={14} /></a>
         </nav>
